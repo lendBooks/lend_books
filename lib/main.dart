@@ -89,8 +89,14 @@ class LoginPageState extends State<LoginPage>{
                 primary: Colors.blueGrey
               ),
             ),
+            TextButton(onPressed: (){},
+                child: Text("Continue as guest"),
+              style: TextButton.styleFrom(
+                primary: Colors.blueGrey
+              ),
+            ),
             SizedBox(
-              height: 100,
+              height: 80,
             ),
             Text('New User? Create Account')
           ],
