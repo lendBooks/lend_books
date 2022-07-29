@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'tabs/searchBooks.dart';
 
 class HomePage extends StatefulWidget{
   @override
@@ -21,7 +22,7 @@ class HomePageState extends State<HomePage> {
           body: TabBarView(
             children: [
               Container(child: Icon(Icons.my_library_books)),
-              Container(child: Icon(Icons.search)),
+              Container(child: SearchBooks()),
               Container(child: Icon(Icons.recommend)),
               Container(child: Icon(Icons.settings)),
             ],
