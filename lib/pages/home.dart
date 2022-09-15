@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'tabs/searchBooks.dart';
 
-class HomePage extends StatefulWidget{
+class HomePage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => HomePageState();
 }
 
 class HomePageState extends State<HomePage> {
+  String _title = "LendBooks";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,7 +18,7 @@ class HomePageState extends State<HomePage> {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.blueGrey,
-            title: Text("Home"),
+            title: Text(_title),
           ),
           bottomNavigationBar: menu(),
           body: TabBarView(
@@ -33,33 +35,33 @@ class HomePageState extends State<HomePage> {
   }
 }
 
-  Widget menu() {
-    return Container(
-      color: Colors.blueGrey,
-      child: TabBar(
-        labelColor: Colors.white,
-        unselectedLabelColor: Colors.white70,
-        indicatorSize: TabBarIndicatorSize.tab,
-        indicatorPadding: EdgeInsets.all(5.0),
-        indicatorColor: Colors.white70,
-        tabs: [
-          Tab(
-            text: "My Library",
-            icon: Icon(Icons.my_library_books),
-          ),
-          Tab(
-            text: "Search Books",
-            icon: Icon(Icons.search),
-          ),
-          Tab(
-            text: "Recommendation",
-            icon: Icon(Icons.recommend),
-          ),
-          Tab(
-            text: "Options",
-            icon: Icon(Icons.settings),
-          ),
-        ],
-      ),
-    );
-  }
+Widget menu() {
+  return Container(
+    color: Colors.blueGrey,
+    child: TabBar(
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.white70,
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicatorPadding: EdgeInsets.all(5.0),
+      indicatorColor: Colors.white70,
+      tabs: [
+        Tab(
+          text: "My Library",
+          icon: Icon(Icons.my_library_books),
+        ),
+        Tab(
+          text: "Search Books",
+          icon: Icon(Icons.search),
+        ),
+        Tab(
+          text: "Recommendation",
+          icon: Icon(Icons.recommend),
+        ),
+        Tab(
+          text: "Options",
+          icon: Icon(Icons.settings),
+        ),
+      ],
+    ),
+  );
+}
