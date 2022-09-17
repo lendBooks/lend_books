@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'pages/home.dart';
+import 'package:lend_books/utils/routes/routes.dart';
+import 'package:lend_books/utils/routes/routes_name.dart';
+import 'package:lend_books/view_model/auth_view_model.dart';
+import 'package:provider/provider.dart';
+import './view/pages/loginPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,113 +15,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      home:LoginPage(),
-    );
+    return MultiProvider(
+        providers: [ChangeNotifierProvider(create: (_) => AuthViewModel())],
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Flutter Demo',
+          initialRoute: RoutesName.login,
+          onGenerateRoute: Routes.generateRoute,
+        ));
   }
 }
-class LoginPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() => LoginPageState();
-}
-
-class LoginPageState extends State<LoginPage>{
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey,
-        title: Text("Lend Books"),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 40.0,bottom: 30.0),
-              child: Center(
-                child: Container(
-                    width: 200,
-                    height: 130,
-                    child: Image.asset('asset/images/flutter-logo.png')),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blueGrey, width: 0.0),
-                    ),
-                    labelText: 'Email',
-                    hintText: 'Enter valid email id as abc@gmail.com'),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 15, bottom: 0),
-              //padding: EdgeInsets.symmetric(horizontal: 15),
-              child: TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.blueGrey, width: 0.0),
-                    ),
-                    labelText: 'Password',
-                    hintText: 'Enter secure password'),
-              ),
-            ),
-            TextButton(
-              onPressed: (){
-                //TODO FORGOT PASSWORD SCREEN GOES HERE
-              },
-              child: Text(
-                'Forgot Password',
-                style: TextStyle(color: Colors.blueGrey, fontSize: 15),
-              ),
-            ),
-            ElevatedButton(
-              onPressed: (){
-                Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomePage(), ));
-              },
-              child: Text("Login"),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.blueGrey
-              ),
-            ),
-            TextButton(onPressed: (){},
-                child: Text("Continue as guest"),
-              style: TextButton.styleFrom(
-                primary: Colors.blueGrey
-              ),
-            ),
-            SizedBox(
-              height: 80,
-            ),
-            Text('New User? Create Account')
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class SignUpPage extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState() => SignUpPageState();
-}
-
-class SignUpPageState extends State<SignUpPage>{
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      backgroundColor: Colors.indigo,
-    );
-  }
-}
-
