@@ -3,7 +3,7 @@ import 'package:lend_books/utils/routes/routes.dart';
 import 'package:lend_books/utils/routes/routes_name.dart';
 import 'package:lend_books/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
-import './view/pages/loginPage.dart';
+import 'view/pages/login_view.dart';
 
 void main() {
   runApp(const MyApp());

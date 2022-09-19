@@ -17,6 +17,7 @@ class AuthViewModel with ChangeNotifier {
     _myRepo
         .loginApi(data)
         .then((value) => {
+              print("I am inside login api : ${value}"),
               setLoading(false),
               Navigator.pushNamed(context, RoutesName.home),
               if (kDebugMode) {print(value.toString())}
