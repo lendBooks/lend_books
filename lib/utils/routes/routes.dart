@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lend_books/utils/routes/routes_name.dart';
-import 'package:lend_books/view/pages/home.dart';
-import 'package:lend_books/view/pages/loginPage.dart';
-import 'package:lend_books/view/pages/signUpPage.dart';
+import 'package:lend_books/view/pages/home_view.dart';
+import 'package:lend_books/view/pages/login_view.dart';
+import 'package:lend_books/view/pages/signUp_view.dart';
 
 class Routes {
   static Route<dynamic> generateRoute(RouteSettings settings) {

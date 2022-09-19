@@ -42,6 +42,7 @@ class _LoginPageState extends State<LoginPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           TextFormField(
+            controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
                 hintText: 'Email', prefixIcon: Icon(Icons.email)),
@@ -72,8 +73,8 @@ class _LoginPageState extends State<LoginPage> {
               title: 'Login',
               onPress: () {
                 Map data = {
-                  "email": _emailController.text.toString(),
-                  "password": _passwordController.text.toString(),
+                  "email": "eve.holt@reqres.in",
+                  "password": "cityslicka",
                 };
                 authViewModel.loginApi(data, context);
                 print('Api is hit');

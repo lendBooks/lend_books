@@ -13,16 +13,23 @@ class NetworkService extends BaseApiServices {
     try {
       final response =
           await http.get(Uri.parse(url)).timeout(Duration(seconds: 10));
-      responseJson = returnResponse(response);
+      return responseJson = returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet Connection');
     }
   }
 
   @override
-  Future postApiResponse(String url, data) {
-    // TODO: implement postApiResponse
-    throw UnimplementedError();
+  Future postApiResponse(String url, data) async {
+    try {
+      print(data);
+      final response = await http
+          .post(Uri.parse(url), body: data)
+          .timeout(Duration(seconds: 10));
+      return responseJson = returnResponse(response);
+    } on SocketException {
+      throw FetchDataException('No Internet Connection');
+    }
   }
 
   dynamic returnResponse(http.Response response) {
