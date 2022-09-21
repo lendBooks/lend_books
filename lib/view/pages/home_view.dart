@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'tabs/searchBooks.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,7 +11,10 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home_Page')),
+      appBar: AppBar(
+        title: Text('Home_Page'),
+        automaticallyImplyLeading: false,
+      ),
       body: Container(
         child: Text('Home Page with list'),
       ),
