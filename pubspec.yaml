@@ -33,6 +33,7 @@ dependencies:
   google_maps_flutter: ^2.2.0
   http: ^0.13.5
   provider: ^6.0.3
+  google_place: ^0.4.7
 
 dev_dependencies:
   flutter_test:
