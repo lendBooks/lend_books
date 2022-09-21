@@ -57,7 +57,7 @@ class _SingUpPageState extends State<SingUpPage> {
     final height = MediaQuery.of(context).size.height * 1;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lend Books'),
+        title: const Text('Lend Books'),
       ),
       body: SafeArea(
           child: Column(
@@ -77,7 +77,7 @@ class _SingUpPageState extends State<SingUpPage> {
                   obscureText: _obsecurePassword.value,
                   decoration: InputDecoration(
                       hintText: 'Password',
-                      prefixIcon: Icon(Icons.password),
+                      prefixIcon: const Icon(Icons.password),
                       suffixIcon: InkWell(
                         onTap: () {
                           _obsecurePassword.value = !_obsecurePassword.value;
@@ -92,16 +92,30 @@ class _SingUpPageState extends State<SingUpPage> {
             focusNode: addressFocusNode,
             controller: _addressController,
             keyboardType: TextInputType.emailAddress,
-            decoration: const InputDecoration(
-                hintText: 'Enter Address',
-                prefixIcon: Icon(Icons.map_outlined)),
+            decoration: InputDecoration(
+              hintText: 'Enter Address',
+              prefixIcon: Icon(Icons.map_outlined),
+              suffixIcon: _addressController.text.isNotEmpty
+                  ? IconButton(
+                      onPressed: () {
+                        setState(() {
+                          predictions = [];
+                          _addressController.clear();
+                        });
+                      },
+                      icon: Icon(Icons.clear_outlined))
+                  : null,
+            ),
             onChanged: (value) {
               if (_debounce?.isActive ?? false) _debounce!.cancel();
               _debounce = Timer(const Duration(milliseconds: 1000), () {
                 if (value.isNotEmpty) {
                   autocompleteSearch(value);
                 } else {
-                  //clear out text
+                  setState(() {
+                    predictions = [];
+                    addressResult = null;
+                  });
                 }
               });
             },
