@@ -35,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: Text('Lend Books'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: SafeArea(
           child: Column(
