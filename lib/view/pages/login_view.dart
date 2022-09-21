@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,6 +19,8 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _radiusController = TextEditingController();
 
   @override
   void dispose() {
@@ -87,7 +90,41 @@ class _LoginPageState extends State<LoginPage> {
             onTap: () {
               Navigator.pushNamed(context, RoutesName.signUp);
             },
-            child: Text("Don't have account? Sign Up!"),
+            child: const Text("Don't have account? Sign Up!"),
+          ),
+          SizedBox(
+            height: height * 0.02,
+          ),
+          InkWell(
+            onTap: () {
+              AwesomeDialog(
+                context: context,
+                headerAnimationLoop: false,
+                animType: AnimType.bottomSlide,
+                body: Center(
+                    child: Column(
+                  children: [
+                    TextFormField(
+                      controller: _nameController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(hintText: 'Enter Name'),
+                    ),
+                    TextFormField(
+                      controller: _radiusController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration:
+                          const InputDecoration(hintText: 'Enter Radius'),
+                    ),
+                  ],
+                )),
+                buttonsTextStyle: const TextStyle(color: Colors.black),
+                showCloseIcon: true,
+                btnOkOnPress: () {
+                  Navigator.pushNamed(context, RoutesName.home);
+                },
+              ).show();
+            },
+            child: const Text("Continue as guest"),
           )
         ],
       )),
