@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                 );
               }),
           SizedBox(
-            height: height * 0.085,
+            height: height * 0.02,
           ),
           RoundButton(
               title: 'Login',
