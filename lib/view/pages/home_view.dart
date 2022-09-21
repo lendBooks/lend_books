@@ -11,57 +11,11 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.blueGrey,
-            title: Text(_title),
-          ),
-          bottomNavigationBar: menu(),
-          body: TabBarView(
-            children: [
-              Container(child: Icon(Icons.my_library_books)),
-              Container(child: SearchBooks()),
-              Container(child: Icon(Icons.recommend)),
-              Container(child: Icon(Icons.settings)),
-            ],
-          ),
-        ),
+    return Scaffold(
+      appBar: AppBar(title: Text('Home_Page')),
+      body: Container(
+        child: Text('Home Page with list'),
       ),
     );
   }
-}
-
-Widget menu() {
-  return Container(
-    color: Colors.blueGrey,
-    child: TabBar(
-      labelColor: Colors.white,
-      unselectedLabelColor: Colors.white70,
-      indicatorSize: TabBarIndicatorSize.tab,
-      indicatorPadding: EdgeInsets.all(5.0),
-      indicatorColor: Colors.white70,
-      tabs: [
-        Tab(
-          text: "My Library",
-          icon: Icon(Icons.my_library_books),
-        ),
-        Tab(
-          text: "Search Books",
-          icon: Icon(Icons.search),
-        ),
-        Tab(
-          text: "Recommendation",
-          icon: Icon(Icons.recommend),
-        ),
-        Tab(
-          text: "Options",
-          icon: Icon(Icons.settings),
-        ),
-      ],
-    ),
-  );
 }
