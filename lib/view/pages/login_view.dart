@@ -1,7 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:lend_books/utils/routes/routes_name.dart';
 import 'package:lend_books/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
