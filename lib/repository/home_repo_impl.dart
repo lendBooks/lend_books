@@ -7,15 +7,12 @@ import '../res/app_url.dart';
 
 class HomeRepository {
   final BaseApiServices _apiServices = NetworkService();
-  Future<List<User>> getUsersApi() async {
+  Future<UsersMain> getUsersApi() async {
     try {
       dynamic response =
           await _apiServices.getApiResponse(AppUrl.usersEndPoint);
-      final jsonData = response['users'] as List;
-      List<User> userData =
-          jsonData.map((tagJson) => User.fromJson(tagJson)).toList();
-      print("UserData ${userData}");
-      return userData;
+      final jsonData = UsersMain.fromJson(response);
+      return jsonData;
     } catch (e) {
       print(e);
       throw e;
