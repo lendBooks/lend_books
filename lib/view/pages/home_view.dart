@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lend_books/model/user.dart';
+import 'package:lend_books/utils/routes/routes_name.dart';
+import 'package:lend_books/view/pages/screen_arguments.dart';
 import 'package:lend_books/view_model/home_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../data/response/status.dart';
@@ -58,11 +60,19 @@ class HomePageState extends State<HomePage> {
         });
   }
 
-  Widget _getMovieListItem(User item) {
+  Widget _getMovieListItem(User user) {
     return Card(
       child: ListTile(
-        title: Text(item.firstName ?? "NA"),
+        title: Text(user.firstName ?? "NA"),
+        onTap: () {
+          _sendDataToMovieDetailScreen(context, user);
+        },
       ),
     );
+  }
+
+  void _sendDataToMovieDetailScreen(BuildContext context, User user) {
+    Navigator.pushNamed(context, RoutesName.userDetails,
+        arguments: ScreenArguments(user));
   }
 }
