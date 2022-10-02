@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lend_books/model/user.dart';
 import 'package:lend_books/view_model/home_view_model.dart';
 import 'package:provider/provider.dart';
-
-import '../../data/response/api_response.dart';
 import '../../data/response/status.dart';
 import '../widgets/error_widget.dart';
 import '../widgets/loading_widget.dart';
