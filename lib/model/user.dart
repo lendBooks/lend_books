@@ -1,3 +1,30 @@
+import 'dart:convert';
+
+UsersMain moviesMainFromJson(String str) =>
+    UsersMain.fromJson(json.decode(str));
+
+String moviesMainToJson(UsersMain data) => json.encode(data.toJson());
+
+class UsersMain {
+  UsersMain({
+    this.users,
+  });
+
+  List<User>? users;
+
+  factory UsersMain.fromJson(Map<String, dynamic> json) => UsersMain(
+        users: json["users"] == null
+            ? null
+            : List<User>.from(json["users"].map((x) => User.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "users": users == null
+            ? null
+            : List<dynamic>.from(users!.map((x) => x.toJson())),
+      };
+}
+
 class User {
   int? id;
   String? firstName;
