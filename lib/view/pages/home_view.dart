@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  String _title = "LendBooks";
+  final String _title = "LendBooks";
   final HomeViewModel homeViewModel = HomeViewModel();
 
   @override
@@ -29,6 +29,16 @@ class HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text('Home_Page'),
           automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.filter_list),
+              tooltip: 'Filter the below lost',
+              onPressed: () {
+                // handle the press
+                _showBottomSheet();
+              },
+            )
+          ],
         ),
         body: ChangeNotifierProvider<HomeViewModel>(
           create: (BuildContext context) => homeViewModel,
@@ -75,4 +85,37 @@ class HomePageState extends State<HomePage> {
     Navigator.pushNamed(context, RoutesName.userDetails,
         arguments: ScreenArguments(user));
   }
+
+  void _showBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+              top: Radius.circular(20))), // set this to true
+      builder: (_) {
+        return DraggableScrollableSheet(
+          expand: false,
+          initialChildSize: 0.3,
+          minChildSize: 0.13,
+          maxChildSize: 0.7,
+          builder: (_, controller) {
+            return Container(
+              child: ListView.builder(
+                controller: controller, // set this too
+                itemBuilder: (_, i) => ListTile(title: Text('Item $i')),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
 }
+
+/**
+ * Container(
+              child: Column(children: [
+                Text("Hi this is textView"),
+              ],)
+ */
