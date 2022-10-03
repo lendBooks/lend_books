@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  String _title = "LendBooks";
+  final String _title = "LendBooks";
   final HomeViewModel homeViewModel = HomeViewModel();
 
   @override
