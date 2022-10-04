@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:lend_books/model/user.dart';
 import 'package:lend_books/utils/routes/routes_name.dart';
 import 'package:lend_books/view/pages/screen_arguments.dart';
+import 'package:lend_books/view/widgets/drop_down_widget.dart';
 import 'package:lend_books/view_model/home_view_model.dart';
 import 'package:provider/provider.dart';
 import '../../data/response/status.dart';
 import '../widgets/error_widget.dart';
 import '../widgets/loading_widget.dart';
+import 'navigation_drawer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,18 +29,18 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Home_Page'),
-          automaticallyImplyLeading: false,
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.filter_list),
-              tooltip: 'Filter the below lost',
-              onPressed: () {
-                // handle the press
-                _showBottomSheet();
-              },
-            )
-          ],
+          title: const Center(child: Text('Home_Page')),
+          automaticallyImplyLeading: true,
+          // actions: [
+          //   // IconButton(
+          //   //   icon: const Icon(Icons.filter_list),
+          //   //   tooltip: 'Filter the below lost',
+          //   //   onPressed: () {
+          //   //     // handle the press
+          //   //     //_showBottomSheet();
+          //   //   },
+          //   // )
+          // ],
         ),
         body: ChangeNotifierProvider<HomeViewModel>(
           create: (BuildContext context) => homeViewModel,
@@ -59,7 +61,8 @@ class HomePageState extends State<HomePage> {
               return Container();
             },
           ),
-        ));
+        ),
+        drawer: NavigationDrawer());
   }
 
   Widget _getUsersListView(List<User>? usersList) {
@@ -86,36 +89,33 @@ class HomePageState extends State<HomePage> {
         arguments: ScreenArguments(user));
   }
 
-  void _showBottomSheet() {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-              top: Radius.circular(20))), // set this to true
-      builder: (_) {
-        return DraggableScrollableSheet(
-          expand: false,
-          initialChildSize: 0.3,
-          minChildSize: 0.13,
-          maxChildSize: 0.7,
-          builder: (_, controller) {
-            return Container(
-              child: ListView.builder(
-                controller: controller, // set this too
-                itemBuilder: (_, i) => ListTile(title: Text('Item $i')),
-              ),
-            );
-          },
-        );
-      },
-    );
-  }
+  // void _showBottomSheet() {
+  //   String genreValue;
+  //   showModalBottomSheet(
+  //     context: context,
+  //     isScrollControlled: true,
+  //     shape: const RoundedRectangleBorder(
+  //         borderRadius: BorderRadius.vertical(
+  //             top: Radius.circular(20))), // set this to true
+  //     builder: (_) {
+  //       return DraggableScrollableSheet(
+  //         expand: false,
+  //         initialChildSize: 0.3,
+  //         minChildSize: 0.13,
+  //         maxChildSize: 0.7,
+  //         builder: (_, controller) {
+  //           return Container(
+  //             child: Column(children: [
+  //               Text("Genre"),
+  //               Text("Newly Added"),
+  //               Text("Sell"),
+  //               Text("Sale"),
+  //               Text("Exchange")
+  //             ]),
+  //           );
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
 }
-
-/**
- * Container(
-              child: Column(children: [
-                Text("Hi this is textView"),
-              ],)
- */
