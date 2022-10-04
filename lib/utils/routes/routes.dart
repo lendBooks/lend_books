@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lend_books/utils/routes/routes_name.dart';
 import 'package:lend_books/view/pages/home_view.dart';
 import 'package:lend_books/view/pages/login_view.dart';
-import 'package:lend_books/view/pages/screen_arguments.dart';
+import 'package:lend_books/view/pages/view_arguments/screen_arguments.dart';
 import 'package:lend_books/view/pages/signUp_view.dart';
 import 'package:lend_books/view/pages/user_details_view.dart';
 

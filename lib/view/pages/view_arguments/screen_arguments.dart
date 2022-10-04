@@ -1,4 +1,4 @@
-import '../../model/user.dart';
+import '../../../model/user.dart';
 
 class ScreenArguments {
   final User _user;
